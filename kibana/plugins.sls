@@ -1,5 +1,6 @@
 include:
   - kibana.install
+  - kibana.service
 
 {%- set plugins_pillar = salt['pillar.get']('kibana:plugins', {}) %}
 
@@ -12,5 +13,7 @@ kibana-{{ name }}:
     - runas: kibana
     - require:
       - sls: kibana.install
+    - watch_in:
+      - service: kibana-name
     - unless: /usr/share/kibana/bin/{{ plugin_bin }} list | grep {{ name }}
 {% endfor %}
