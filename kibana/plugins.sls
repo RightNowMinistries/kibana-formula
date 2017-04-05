@@ -9,6 +9,7 @@ include:
 kibana-{{ name }}:
   cmd.run:
     - name: /usr/share/kibana/bin/{{ plugin_bin }} install {{ repo }}
+    - runas: kibana
     - require:
       - sls: kibana.install
     - unless: /usr/share/kibana/bin/{{ plugin_bin }} list | grep {{ name }}
