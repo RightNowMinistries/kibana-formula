@@ -2,6 +2,7 @@
 # vim: ft=yaml
 kibana:
   pkg: kibana # This is not used for source installations, only binary distributions
+  pkg_version: latest
   configfile: '/opt/kibana/config/kibana.yml' # This is not used for the source install
   source: false # Install from source
   repoVersion: "4.6" # Elastic repo version
